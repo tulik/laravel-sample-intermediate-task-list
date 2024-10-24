@@ -5,8 +5,11 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+    paths:
+      - '**/*.js'
+      - '**/*.ts'
   schedule:
-    - cron: '18 16 * * 5'
+    - cron: '44 5 * * 5'
 
 jobs:
   analyze:
@@ -50,7 +53,3 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-        
-    - name: Apply Autofix for CodeQL Alerts
-      uses: github/codeql-action/autofix@v3
-  
